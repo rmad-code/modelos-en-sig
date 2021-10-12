@@ -51,6 +51,85 @@ ggplot()+geom_sf(data = Mapa)+theme_bw()
 
 # Exportando los datos como un shapefile
 
+write_sf(Datos, "Datos.shp")
+
+#### Graficos #####
+# generamos el entorno
+
+ggplot()+
+  geom_sf(data = Mapa)+
+  theme_bw()
+
+#agregamos los puntos
+
+ggplot()+
+  geom_sf(data = Mapa)+
+  geom_sf(data = Datos)+
+  theme_bw()
+
+# agreguemos color por especie
+
+ggplot()+
+  geom_sf(data = Mapa)+
+  geom_sf(data = Datos, aes(color=species))+
+  theme_bw()
+
+# agregamos el tamaño por abundancia
+
+ggplot()+
+  geom_sf(data = Mapa)+
+  geom_sf(data = Datos, aes(color=species, size=Measurement))+
+  theme_bw()
+
+# cambiamos posicion de la leyenda
+ggplot()+
+  geom_sf(data = Mapa)+
+  geom_sf(data = Datos, aes(color=species, size=Measurement))+
+  theme_bw()+theme(legend.position = "bottom")
+
+# se puede generar un grafico para cada especie
+
+ggplot()+
+  geom_sf(data = Mapa)+
+  geom_sf(data = Datos, aes(color=species, size=Measurement))+
+  theme_bw()+
+  facet_wrap(~species)
+
+###################################################################
+# Hacer tabla resumen de la bd incluyendo species, mean, max, min 
+###################################################################
+
+# luego se buscara construir un modelo que explique que variables 
+# ambientales explicarian estos patrones de abundancia de las especies y 
+# proyectar como debiera ser la abundancia en otras zonas del mapa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
